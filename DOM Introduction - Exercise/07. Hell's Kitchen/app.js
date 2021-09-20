@@ -1,8 +1,10 @@
 function solve() {
    document.querySelector('#btnSend').addEventListener('click', onClick);
+   let input = document.querySelector('#inputs>textarea');
+
 
    function onClick () {
-      //   TODO:
+      let arr = JSON.parse(input.value)
       
    }
 }
