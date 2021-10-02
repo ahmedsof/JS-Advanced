@@ -3,8 +3,15 @@ function solve() {
     const inputs = Array.from(formElement).slice(0, formElement.length - 1);
     const onScreenButton = Array.from(formElement).slice(formElement.length - 1)[0];
     const moviesUl = document.querySelector('#movies>ul');
+    const archiveUl = document.querySelector('#archive>ul');
+    const clearBtn = document.querySelector('#archive>button');
     
     onScreenButton.addEventListener('click', createMuvie);
+    clearBtn.addEventListener('click', clearArch);
+
+    function clearArch(ev) { ev.target.parentNode.children[1].innerHTML = ''; }
+
+    function deleteArch(ev){ev.target.parentNode.remove()}
 
     function archive(ev) {
         const li = ev.target.parentNode.parentNode;
@@ -15,13 +22,29 @@ function solve() {
         if (input.value == '') {
             return;
         }
+        const liArch = document.createElement('li');
 
         const name = li.children[0].textContent;
         const price = +div.children[0].textContent;
         let totalPrice = price * Number(input.value);
         
+        let spanArch = document.createElement('span');
+        spanArch.textContent = name;
 
-        li.remove;
+        let strongArch = document.createElement('strong');
+        strongArch.textContent = `Total amount: ${totalPrice.toFixed(2)}`;
+
+        let buttonArh = document.createElement('button');
+        buttonArh.textContent = 'Delete';
+        buttonArh.addEventListener('click', deleteArch);
+
+        liArch.appendChild(spanArch);
+        liArch.appendChild(strongArch);
+        liArch.appendChild(buttonArh);
+
+        archiveUl.appendChild(liArch);
+
+        li.remove();
         
     }
 
