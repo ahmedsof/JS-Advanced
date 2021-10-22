@@ -1,3 +1,6 @@
+let describe = require('mocha').describe;
+let assert = require('chai').assert;
+
 const testNumbers = {
     sumNumbers: function (num1, num2) {
         let sum = 0;
@@ -35,5 +38,25 @@ const testNumbers = {
     }
 };
 
-
+describe('Test Numbers', () => {
+    it('should', () => {
+        assert.equal(testNumbers.sumNumbers(2, 2), 4)
+        assert.equal(testNumbers.sumNumbers('2', 2), undefined);
+        assert.equal(testNumbers.sumNumbers(2, '2'), undefined);
+        assert.equal(testNumbers.sumNumbers('2', '2'), undefined);
+        assert.equal(testNumbers.sumNumbers(1.222, 1.222), 2.44)
+        
+    });
+    it('should', () => {
+        //assert.equal(testNumbers.numberChecker('aa'), 'The input is not a number!')
+        assert.equal(testNumbers.numberChecker(1), 'The number is odd!')
+        assert.equal(testNumbers.numberChecker(2), 'The number is even!')
+        assert.equal(testNumbers.numberChecker('1'), 'The number is odd!')
+        assert.equal(testNumbers.numberChecker('2'), 'The number is even!')
+        assert.Throw(() => { testNumbers.numberChecker('a') })
+    });
+    it('should', () => {
+        assert.equal(testNumbers.averageSumArray([1, 2, 3]), 2)
+    })
+ })
 
